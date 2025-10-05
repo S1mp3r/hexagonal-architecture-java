@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "rafael.clients.address.url",
+  "type": "java.lang.String",
+  "description": "The URL for the Address Client"
+}]}

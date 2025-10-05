@@ -9,3 +9,9 @@ spring:
       auto-index-creation: true
       authentication-database: admin
       database: hexagonal-architecture
+
+# Clients
+rafael:
+  clients:
+    address:
+      url: "http://localhost:8081/api/v1/addresses"
