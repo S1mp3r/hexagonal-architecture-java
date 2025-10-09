@@ -1,6 +1,7 @@
 package com.rafael.hexagonal.architecture.adapters.out;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rafael.hexagonal.architecture.adapters.out.repository.CustomerRepository;
 import com.rafael.hexagonal.architecture.adapters.out.repository.mapper.CustomerMapper;
@@ -17,6 +18,7 @@ public class InsertCustomerAdapter implements InsertCustomerOutputPort {
     private final CustomerMapper customerMapper;
 
     @Override
+    @Transactional
     public Customer insert(Customer customer) {
         var customerEntity = customerMapper.toCustomerEntity(customer);
         customerEntity = customerRepository.save(customerEntity);
