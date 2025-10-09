@@ -12,7 +12,11 @@ public class UpdateCustomerByIdUseCase implements UpdateCustomerByIdInputPort {
     private final UpdateCustomerOutputPort updateCustomerOutputPort;
     private final FindAddressByZipCodeOutputPort addressPort;
     
-    public UpdateCustomerByIdUseCase(FindCustomerByIdInputPort findCustomerByIdInputPort, UpdateCustomerOutputPort updateCustomerOutputPort, FindAddressByZipCodeOutputPort addressPort) {
+    public UpdateCustomerByIdUseCase(
+        FindCustomerByIdInputPort findCustomerByIdInputPort, 
+        UpdateCustomerOutputPort updateCustomerOutputPort, 
+        FindAddressByZipCodeOutputPort addressPort) 
+        {
         this.findCustomerByIdInputPort = findCustomerByIdInputPort;
         this.updateCustomerOutputPort = updateCustomerOutputPort;
         this.addressPort = addressPort;
