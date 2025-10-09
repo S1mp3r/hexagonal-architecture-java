@@ -15,3 +15,9 @@ rafael:
   clients:
     address:
       url: "http://localhost:8082/api/v1/addresses"
+
+kafka:
+  url: "localhost:9092"
+  groups:
+    rafael:
+      name: "rafael"

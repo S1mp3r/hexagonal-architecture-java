@@ -1,5 +1,19 @@
-{"properties": [{
-  "name": "rafael.clients.address.url",
-  "type": "java.lang.String",
-  "description": "The URL for the Address Client"
-}]}
+{
+  "properties": [
+    {
+      "name": "rafael.clients.address.url",
+      "type": "java.lang.String",
+      "description": "The URL for the Address Client"
+    },
+    {
+      "name": "kafka.url",
+      "type": "java.lang.String",
+      "description": "The URL for Kafka communication"
+    },
+    {
+      "name": "kafka.groups.rafael.name",
+      "type": "java.lang.String",
+      "description": "The name of a kafka group"
+    }
+  ]
+}
