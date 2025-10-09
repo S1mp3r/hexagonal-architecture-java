@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rafael.hexagonal.architecture.adapters.in.controller.mapper.CustomerRequestMapper;
 import com.rafael.hexagonal.architecture.adapters.in.controller.request.CustomerRequest;
 import com.rafael.hexagonal.architecture.adapters.in.controller.response.CustomerResponse;
+import com.rafael.hexagonal.architecture.application.ports.in.DeleteCustomerByIdInputPort;
 import com.rafael.hexagonal.architecture.application.ports.in.FindCustomerByIdInputPort;
 import com.rafael.hexagonal.architecture.application.ports.in.InsertCustomerInputPort;
 import com.rafael.hexagonal.architecture.application.ports.in.UpdateCustomerByIdInputPort;
@@ -21,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -35,6 +37,7 @@ public class CustomerController {
     private final InsertCustomerInputPort insertCustomerInputPort;
     private final FindCustomerByIdInputPort findCustomerByIdInputPort;
     private final UpdateCustomerByIdInputPort updateCustomerByIdInputPort;
+    private final DeleteCustomerByIdInputPort deleteCustomerByIdInputPort;
     private final CustomerRequestMapper customerRequestMapper;
 
     @GetMapping("/{id}")
@@ -58,12 +61,19 @@ public class CustomerController {
     }
     
     @PutMapping("/{id}")
-    @ResponseStatus(value = HttpStatus.OK)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @Operation(description = "Endpoint for updating a customers zipCode by his Id and some of his information")
     public void putMethodName(@PathVariable String id, @Valid @RequestBody CustomerRequest customerRequest) {
         var customer = customerRequestMapper.toCustomer(customerRequest);
         customer.setId(id);
         updateCustomerByIdInputPort.update(customer, customerRequest.getZipCode());
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    @Operation(description = "Endpoint for deleting a customer from the database")
+    public void putMethodName(@PathVariable String id) {
+        deleteCustomerByIdInputPort.delete(id);
     }
 
 }
