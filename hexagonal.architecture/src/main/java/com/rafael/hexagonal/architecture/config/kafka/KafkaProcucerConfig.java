@@ -19,9 +19,6 @@ public class KafkaProcucerConfig {
 
     @Value("${kafka.url}")
     private String kafkaUrl;
-
-    @Value("${kafka.groups.rafael.name}")
-    private String groupId;
     
     @Bean
     ProducerFactory<String, String> producerFactory() {

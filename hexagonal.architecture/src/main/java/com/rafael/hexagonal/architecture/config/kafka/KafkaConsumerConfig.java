@@ -3,7 +3,6 @@ package com.rafael.hexagonal.architecture.config.kafka;
 import java.util.HashMap;
 
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,7 +38,12 @@ public class KafkaConsumerConfig {
         configs.put(KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configs.put(VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configs.put(AUTO_OFFSET_RESET_CONFIG, "earliest");
-        return new DefaultKafkaConsumerFactory<>(configs, new StringDeserializer(), new JsonDeserializer<>(CustomerMessage.class));
+
+        JsonDeserializer<CustomerMessage> deserializer = new JsonDeserializer<>(CustomerMessage.class);
+        deserializer.addTrustedPackages("*");
+        deserializer.ignoreTypeHeaders();
+
+        return new DefaultKafkaConsumerFactory<>(configs, new StringDeserializer(), deserializer);
     }
 
     @Bean
