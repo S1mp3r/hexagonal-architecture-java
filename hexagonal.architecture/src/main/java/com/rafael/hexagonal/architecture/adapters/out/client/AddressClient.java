@@ -12,6 +12,6 @@ import com.rafael.hexagonal.architecture.adapters.out.client.response.AddressRes
 public interface AddressClient {
     
     @GetMapping("/{zipCode}")
-    public AddressResponse findAddressByZipCode(@PathVariable("zipCode") String zipCode);
+    public AddressResponse findAddressByZipCode(@PathVariable String zipCode);
 
 }

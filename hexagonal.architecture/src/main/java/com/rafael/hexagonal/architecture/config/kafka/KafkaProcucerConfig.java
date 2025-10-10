@@ -13,7 +13,6 @@ import org.springframework.kafka.core.ProducerFactory;
 import static org.apache.kafka.clients.producer.ProducerConfig.BOOTSTRAP_SERVERS_CONFIG;
 import static org.apache.kafka.clients.producer.ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG;
 import static org.apache.kafka.clients.producer.ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG;
-import static org.apache.kafka.clients.consumer.ConsumerConfig.GROUP_ID_CONFIG;
 
 @Configuration
 public class KafkaProcucerConfig {
@@ -28,7 +27,6 @@ public class KafkaProcucerConfig {
     ProducerFactory<String, String> producerFactory() {
         HashMap<String, Object> configs = new HashMap<>();
         configs.put(BOOTSTRAP_SERVERS_CONFIG, kafkaUrl);
-        configs.put(GROUP_ID_CONFIG, groupId);
         configs.put(KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configs.put(VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         return new DefaultKafkaProducerFactory<>(configs);

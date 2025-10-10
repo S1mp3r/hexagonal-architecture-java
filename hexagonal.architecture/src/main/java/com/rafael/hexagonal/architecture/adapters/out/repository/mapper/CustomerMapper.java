@@ -9,6 +9,7 @@ import com.rafael.hexagonal.architecture.application.core.domain.Customer;
 public interface CustomerMapper {
     
     public CustomerEntity toCustomerEntity(Customer src);
+
     public Customer toCustomer(CustomerEntity src);
 
 }

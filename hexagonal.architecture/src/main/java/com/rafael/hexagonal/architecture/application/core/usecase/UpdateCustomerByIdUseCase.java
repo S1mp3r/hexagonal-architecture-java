@@ -28,7 +28,7 @@ public class UpdateCustomerByIdUseCase implements UpdateCustomerByIdInputPort {
         findCustomerByIdInputPort.findCustomer(customer.getId());
         var address = addressPort.find(zipCode);
 
-        customer.setAddres(address);
+        customer.setAddress(address);
 
         updateCustomerOutputPort.save(customer);
     }
