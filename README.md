@@ -1,4 +1,4 @@
-# hexagonal-architecture-java
+# WorkflowManager
 
 A small Java project built with **Spring Boot** and **Apache Kafka** to learn and apply **Hexagonal Architecture** concepts.
 
